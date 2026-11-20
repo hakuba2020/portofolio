@@ -1,0 +1,6 @@
+# CV berisi data pribadi (NIP, tanggal lahir) — jangan diunggah
+*.docx
+~$*
+
+# Konfigurasi lokal Claude
+.claude/
