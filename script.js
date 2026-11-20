@@ -51,6 +51,15 @@ var PROFILE_LINKS = {
   document.querySelectorAll('.course[data-url]').forEach(function (el) { addLink(el, 'Materi & RPS ↗', 'item-link'); });
   document.querySelectorAll('.project[data-url]').forEach(function (el) { addLink(el, 'Lihat proyek ↗', 'item-link'); });
 
+  // Book covers: show img/buku/*.jpg when the file exists, else keep the generated cover
+  document.querySelectorAll('.book[data-cover]').forEach(function (book) {
+    var cover = book.querySelector('.book-cover');
+    var img = new Image();
+    img.alt = 'Sampul buku ' + cover.querySelector('b').textContent;
+    img.onload = function () { cover.classList.add('has-img'); cover.appendChild(img); };
+    img.src = book.getAttribute('data-cover');
+  });
+
   // CV button: only shown when cv.pdf exists
   var cvBtn = document.querySelector('[data-cv]');
   if (cvBtn) {
